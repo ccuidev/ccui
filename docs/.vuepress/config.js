@@ -1,3 +1,4 @@
+const components = Object.keys(require("../../components.json"));
 module.exports = {
   locales: {
     '/': {
@@ -41,7 +42,7 @@ module.exports = {
             {
               title: 'Components',
               collapsable: false,
-              children: ['standard-component', 'functional-component', 'magnifying-glass', 'top-nav-menu3']
+              children: components
             }
           ]
         }

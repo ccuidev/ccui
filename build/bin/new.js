@@ -90,7 +90,7 @@ fileSave(path.join(__dirname, '../../components.json'))
   .write(JSON.stringify(componentsFile, null, '  '), 'utf8')
   .end('\n')
 // // 添加路径
-const componentsFile2 = `export { default as ${ComponentName} } from './${ComponentName}'`
+const componentsFile2 = `export { default as ${ComponentName} } from './${ComponentName}'\n`
 
 fs.writeFileSync(path.join(__dirname, '../../src/components/index.js'), componentsFile2,{ 'flag': 'a' })
 // 创建 组件文件
