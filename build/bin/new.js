@@ -20,12 +20,12 @@ const ComponentName = uppercamelcase(componentname)
 const PackagePath = path.resolve(__dirname, '../../src/components', ComponentName)
 const PackagePath2 = path.resolve(__dirname, '../../docs', ComponentName)
 const Files = [
-{
-  filename: 'index.js',
-  content: `import ${ComponentName} from './${ComponentName}.vue'
+  {
+    filename: 'index.js',
+    content: `import ${ComponentName} from './${ComponentName}.vue'
 
 export default ${ComponentName}`
-},
+  },
   {
     filename: `${ComponentName}.vue`,
     content: `<template>
