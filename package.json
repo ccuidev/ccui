@@ -23,6 +23,10 @@
     "vuepress": "^1.0.0-alpha.44"
   },
   "dependencies": {
-    "build-lib": "^1.0.0"
+    "build-lib": "^1.0.0",
+    "file-save": "^0.2.0",
+    "fs": "0.0.1-security",
+    "path": "^0.12.7",
+    "uppercamelcase": "^3.0.0"
   }
 }

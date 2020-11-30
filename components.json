@@ -1,4 +1,5 @@
 {
   "magnifying-glass": "./src/components/magnifying-glass/index.js",
-  "top-nav-menu3": "./src/components/top-nav-menu3/index.js"
+  "top-nav-menu3": "./src/components/top-nav-menu3/index.js",
+  "data-card-price": "./src/components/data-card-price/index.js"
 }
