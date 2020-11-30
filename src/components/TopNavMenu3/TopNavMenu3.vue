@@ -216,8 +216,5 @@ export default {
         color: white;
         line-height: 17px;
     }
-    .sub-menu-wrapper .logo-container {
-        display: inline-block;
-    }
 </style>
 
