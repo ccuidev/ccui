@@ -1,6 +1,6 @@
 {
-  "name": "ccui-component-library",
-  "version": "0.0.6",
+  "name": "ccui-component-library1",
+  "version": "0.0.1",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
