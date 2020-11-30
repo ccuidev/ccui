@@ -15,141 +15,93 @@ const fs = require('fs')
 const fileSave = require('file-save')
 const uppercamelcase = require('uppercamelcase')
 const componentname = process.argv[2]
-const chineseName = process.argv[3] || componentname
+// const chineseName = process.argv[3] || componentname
 const ComponentName = uppercamelcase(componentname)
-const PackagePath = path.resolve(__dirname, '../../packages', componentname)
+const PackagePath = path.resolve(__dirname, '../../src/components', ComponentName)
+const PackagePath2 = path.resolve(__dirname, '../../docs', ComponentName)
 const Files = [
-  {
-    filename: 'index.js',
-    content: `import ${ComponentName} from './src/main';
+{
+  filename: 'index.js',
+  content: `import ${ComponentName} from './${ComponentName}.vue'
 
-/* istanbul ignore next */
-${ComponentName}.install = function(Vue) {
-  Vue.component(${ComponentName}.name, ${ComponentName});
-};
-
-export default ${ComponentName};`
-  },
+export default ${ComponentName}`
+},
   {
-    filename: 'src/main.vue',
+    filename: `${ComponentName}.vue`,
     content: `<template>
-  <div class="el-${componentname}"></div>
+<div class="ccui-${componentname}"></div>
 </template>
 
 <script>
 export default {
-  name: 'El${ComponentName}'
+  name: '${componentname}'
 };
 </script>`
   },
   {
-    filename: path.join('../../examples/docs/zh-CN', `${componentname}.md`),
-    content: `## ${ComponentName} ${chineseName}`
+    filename: `${componentname}.spec.js`,
+    content: ``
+  }]
+const Files2 = [
+  {
+    filename: path.join(
+      '../../docs/.vuepress/components/examples',
+      `${componentname}-doc.vue`
+    ),
+    content: `<template>
+  <div>
+  
+  </div>
+</template>`
   },
   {
-    filename: path.join('../../examples/docs/en-US', `${componentname}.md`),
-    content: `## ${ComponentName}`
-  },
-  {
-    filename: path.join('../../examples/docs/es', `${componentname}.md`),
-    content: `## ${ComponentName}`
-  },
-  {
-    filename: path.join('../../examples/docs/fr-FR', `${componentname}.md`),
-    content: `## ${ComponentName}`
-  },
-  {
-    filename: path.join('../../test/unit/specs', `${componentname}.spec.js`),
-    content: `import { createTest, destroyVM } from '../util';
-import ${ComponentName} from 'packages/${componentname}';
+    filename: path.join('../../docs/components', `${componentname}.md`),
+    content: `# ${componentname}
+      
+Wow! This component is awesome.
 
-describe('${ComponentName}', () => {
-  let vm;
-  afterEach(() => {
-    destroyVM(vm);
-  });
+## Example
 
-  it('create', () => {
-    vm = createTest(${ComponentName}, true);
-    expect(vm.$el).to.exist;
-  });
-});
-`
-  },
-  {
-    filename: path.join('../../packages/theme-chalk/src', `${componentname}.scss`),
-    content: `@import "mixins/mixins";
-@import "common/var";
+<Demo componentName="examples-${componentname}-doc" />
 
-@include b(${componentname}) {
-}`
-  },
-  {
-    filename: path.join('../../types', `${componentname}.d.ts`),
-    content: `import { ElementUIComponent } from './component'
+## Source Code
 
-/** ${ComponentName} Component */
-export declare class El${ComponentName} extends ElementUIComponent {
-}`
+<SourceCode>
+<<< @/docs/.vuepress/components/examples/${componentname}-doc.vue
+</SourceCode>
+
+## slots
+
+...
+
+## props
+
+...`
   }
 ]
-
-// 添加到 components.json
 const componentsFile = require('../../components.json')
 if (componentsFile[componentname]) {
   console.error(`${componentname} 已存在.`)
   process.exit(1)
 }
-componentsFile[componentname] = `./packages/${componentname}/index.js`
+// 添加到 components.json 防止重名
+componentsFile[componentname] = `./src/components/${componentname}/index.js`
 fileSave(path.join(__dirname, '../../components.json'))
   .write(JSON.stringify(componentsFile, null, '  '), 'utf8')
   .end('\n')
+// // 添加路径
+const componentsFile2 = `export { default as ${ComponentName} } from './${ComponentName}'`
 
-// 添加到 index.scss
-const sassPath = path.join(__dirname, '../../packages/theme-chalk/src/index.scss')
-const sassImportText = `${fs.readFileSync(sassPath)}@import "./${componentname}.scss";`
-fileSave(sassPath)
-  .write(sassImportText, 'utf8')
-  .end('\n')
-
-// 添加到 ccui.d.ts
-const elementTsPath = path.join(__dirname, '../../types/ccui.d.ts')
-
-let elementTsText = `${fs.readFileSync(elementTsPath)}
-/** ${ComponentName} Component */
-export class ${ComponentName} extends El${ComponentName} {}`
-
-const index = elementTsText.indexOf('export') - 1
-const importString = `import { El${ComponentName} } from './${componentname}'`
-
-elementTsText = elementTsText.slice(0, index) + importString + '\n' + elementTsText.slice(index)
-
-fileSave(elementTsPath)
-  .write(elementTsText, 'utf8')
-  .end('\n')
-
-// 创建 package
+fs.writeFileSync(path.join(__dirname, '../../src/components/index.js'), componentsFile2,{ 'flag': 'a' })
+// 创建 组件文件
 Files.forEach(file => {
   fileSave(path.join(PackagePath, file.filename))
     .write(file.content, 'utf8')
     .end('\n')
 })
-
-// 添加到 nav.config.json
-const navConfigFile = require('../../examples/nav.config.json')
-
-Object.keys(navConfigFile).forEach(lang => {
-  let groups = navConfigFile[lang][4].groups
-  groups[groups.length - 1].list.push({
-    path: `/${componentname}`,
-    title: lang === 'zh-CN' && componentname !== chineseName
-      ? `${ComponentName} ${chineseName}`
-      : ComponentName
-  })
+Files2.forEach(file => {
+  fileSave(path.join(PackagePath2, file.filename))
+    .write(file.content, 'utf8')
+    .end('\n')
 })
-
-fileSave(path.join(__dirname, '../../examples/nav.config.json'))
-  .write(JSON.stringify(navConfigFile, null, '  '), 'utf8')
-  .end('\n')
-
 console.log('DONE!')

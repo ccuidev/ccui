@@ -41,7 +41,7 @@ module.exports = {
             {
               title: 'Components',
               collapsable: false,
-              children: ['standard-component', 'functional-component']
+              children: ['standard-component', 'functional-component', 'magnifying-glass']
             }
           ]
         }
