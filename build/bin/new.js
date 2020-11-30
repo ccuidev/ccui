@@ -15,7 +15,7 @@ const fs = require('fs')
 const fileSave = require('file-save')
 const uppercamelcase = require('uppercamelcase')
 const componentname = process.argv[2]
-// const chineseName = process.argv[3] || componentname
+const chineseName = process.argv[3] || componentname
 const ComponentName = uppercamelcase(componentname)
 const PackagePath = path.resolve(__dirname, '../../src/components', ComponentName)
 const PackagePath2 = path.resolve(__dirname, '../../docs', ComponentName)
@@ -56,7 +56,7 @@ const Files2 = [
   },
   {
     filename: path.join('../../docs/components', `${componentname}.md`),
-    content: `# ${componentname}
+    content: `# ${componentname} ${chineseName}
       
 Wow! This component is awesome.
 
