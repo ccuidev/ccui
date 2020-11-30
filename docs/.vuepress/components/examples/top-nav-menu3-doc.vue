@@ -5,7 +5,7 @@
                 @ccuiHelp="appHelp"
                 @onSubmitSkip="handleSelect"
                 appTitle="组织管理"
-                companyTitle="交建云商运营中心"
+                companyTitle="运营中心"
                 dashboard
                 minWidth="1222px"
                 ref="topNavMenu"
@@ -87,3 +87,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+ /deep/ .sub-menu-wrapper-wrapper {
+     background-color: red;
+ }
+</style>
