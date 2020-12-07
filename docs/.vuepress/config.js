@@ -8,9 +8,7 @@ module.exports = {
     }
   },
   themeConfig: {
-    repoLabel: '贡献!',
     // git repo here... gitlab, github
-    repo: 'https://github.com/siegerts/vue-component-library-template',
     docsDir: 'docs',
     editLinks: true,
     docsBranch: 'master',
@@ -31,11 +29,6 @@ module.exports = {
         nav: [
           { text: '入门指南', link: '/guide' },
           { text: '组件', link: '/components/' },
-          // external link to git repo...again
-          {
-            text: 'GitHub',
-            link: 'https://github.com/siegerts/vue-component-library-template'
-          }
         ],
         sidebar: {
           '/components/': [

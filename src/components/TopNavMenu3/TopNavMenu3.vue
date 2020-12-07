@@ -171,19 +171,7 @@ export default {
         background-color: #0089EF;
         position: relative;
     }
-    .el-top-nav-menu3 .sub-menu-wrapper-wrapper .sub-menu-wrapper {
-        position: relative;
-        margin: 0 auto;
-        height: 80px;
-    }
-    .el-top-nav-menu3 .sub-menu-wrapper-wrapper .sub-menu-wrapper .logo-container {
-        position: absolute;
-        top: 50%;
-        transform: translate(0, -50%);
-        width: 200px;
-        z-index: 1000;
-        font-size: 0;
-    }
+
     .logo-container {
         position: absolute;
         top: 50%;
