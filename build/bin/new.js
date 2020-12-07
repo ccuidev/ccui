@@ -29,17 +29,17 @@ export default ${ComponentName}`
   {
     filename: `${ComponentName}.vue`,
     content: `<template>
-<div class="ccui-${componentname}"></div>
+<div class="${componentname}"></div>
 </template>
 
 <script>
 export default {
-  name: '${componentname}'
+  name: '${ComponentName}'
 };
 </script>`
   },
   {
-    filename: `${componentname}.spec.js`,
+    filename: `${ComponentName}.spec.js`,
     content: ``
   }]
 const Files2 = [
