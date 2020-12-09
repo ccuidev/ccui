@@ -31,14 +31,6 @@ const Files = [
 export default ${ComponentName}`
   },
   {
-    filename: path.join('../../src/components/theme-chalk/src', `${componentname}.scss`),
-    content: `@import "mixins/mixins";
-@import "common/var";
-
-@include b(${componentname}) {
-}`
-  },
-  {
     filename: `${ComponentName}.vue`,
     content: `<template>
 <div class="${componentname}"></div>
@@ -105,6 +97,20 @@ fileSave(path.join(__dirname, '../../components.json'))
 const componentsFile2 = `export { default as ${ComponentName} } from './${ComponentName}'\n`
 
 fs.writeFileSync(path.join(__dirname, '../../src/components/index.js'), componentsFile2,{ 'flag': 'a' })
+// 添加到 index.scss
+const sassPath = path.join('./src/components/theme-chalk/index.scss');
+const sassImportText = `${fs.readFileSync(sassPath)}@import "${componentname}";\n`;
+fs.writeFileSync(path.join( './src/components/theme-chalk/index.scss'), sassImportText,{ 'flag': 'w' })
+let content = `@import "mixins/mixins";
+@import "common/var";
+
+@include b(${componentname}) {
+}`
+
+fileSave(path.join('./src/components/theme-chalk/', `${componentname}.scss`))
+  .write(content, 'utf8')
+  .end('\n')
+
 // 创建 组件文件
 Files.forEach(file => {
   fileSave(path.join(PackagePath, file.filename))
@@ -116,10 +122,5 @@ Files2.forEach(file => {
     .write(file.content, 'utf8')
     .end('\n')
 })
-// 添加到 index.scss
-const sassPath = path.join(__dirname, './src/components/theme-chalk/src/index.scss');
-const sassImportText = `${fs.readFileSync(sassPath)}@import "./${componentname}.scss";`;
-fileSave(sassPath)
-  .write(sassImportText, 'utf8')
-  .end('\n');
+
 console.log('DONE!')

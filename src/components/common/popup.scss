@@ -33,9 +33,3 @@
   opacity: $--popup-modal-opacity;
   background: $--popup-modal-background-color;
 }
-
-@include b(popup-parent) {
-  @include m(hidden) {
-    overflow: hidden;
-  }
-}
