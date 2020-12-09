@@ -83,7 +83,7 @@
   width: 100%;
   input::-ms-clear{display:none;}
   input::-ms-reveal{display:none;}
-  /deep/ input.ccui-input__inner{
+  input.ccui-input__inner{
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;

@@ -1,20 +1,692 @@
-/* Error: expected selector.
- *    ,
- * 86 |   /deep/ input.ccui-input__inner{
- *    |   ^
- *    '
- *   ccuiinput.scss 86:3      @content
- *   mixins\mixins.scss 74:5  b()
- *   ccuiinput.scss 79:1      @import
- *   index.scss 1:9           root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: expected selector.\a    \2577 \a 86 \2502    /deep/ input.ccui-input__inner{\d\a    \2502    ^\a    \2575 \a   ccuiinput.scss 86:3      @content\a   mixins\\mixins.scss 74:5  b()\a   ccuiinput.scss 79:1      @import\a   index.scss 1:9           root stylesheet";
+@charset "UTF-8";
+/* BEM support Func
+ -------------------------- */
+/* ecf5ff */
+/* Table
+-------------------------- */
+/* Tooltip
+-------------------------- */
+/* 表格头部按钮
+--------------------------*/
+/* Element Chalk Variables */
+/* Transition
+-------------------------- */
+/* Color
+-------------------------- */
+/* 53a8ff */
+/* 66b1ff */
+/* 79bbff */
+/* 8cc5ff */
+/* a0cfff */
+/* b3d8ff */
+/* c6e2ff */
+/* d9ecff */
+/* ecf5ff */
+/* Link
+-------------------------- */
+/* Border
+-------------------------- */
+/* Fill
+-------------------------- */
+/* Typography
+-------------------------- */
+/* Size
+-------------------------- */
+/* z-index
+-------------------------- */
+/* Disable base
+-------------------------- */
+/* Icon
+-------------------------- */
+/* Checkbox
+-------------------------- */
+/* Radio
+-------------------------- */
+/* Select
+-------------------------- */
+/* Alert
+-------------------------- */
+/* MessageBox
+-------------------------- */
+/* Message
+-------------------------- */
+/* Notification
+-------------------------- */
+/* Input
+-------------------------- */
+/* Cascader
+-------------------------- */
+/* Group
+-------------------------- */
+/* Tab
+-------------------------- */
+/* Button
+-------------------------- */
+/* cascader
+-------------------------- */
+/* Switch
+-------------------------- */
+/* Dialog
+-------------------------- */
+/* Table
+-------------------------- */
+/* Pagination
+-------------------------- */
+/* Popup
+-------------------------- */
+/* Popover
+-------------------------- */
+/* Tooltip
+-------------------------- */
+/* Tag
+-------------------------- */
+/* Tree
+-------------------------- */
+/* Dropdown
+-------------------------- */
+/* Badge
+-------------------------- */
+/* Card
+--------------------------*/
+/* Slider
+--------------------------*/
+/* Steps
+--------------------------*/
+/* Menu
+--------------------------*/
+/* Rate
+--------------------------*/
+/* DatePicker
+--------------------------*/
+/* Loading
+--------------------------*/
+/* Scrollbar
+--------------------------*/
+/* Carousel
+--------------------------*/
+/* Collapse
+--------------------------*/
+/* Transfer
+--------------------------*/
+/* Header
+  --------------------------*/
+/* Footer
+--------------------------*/
+/* Main
+--------------------------*/
+/* Timeline
+--------------------------*/
+/* Backtop
+--------------------------*/
+/* Link
+--------------------------*/
+/* Calendar
+--------------------------*/
+/* Avatar
+--------------------------*/
+/* Break-point
+--------------------------*/
+/* 主色
+--------------------------*/
+/* cardTitle-color
+--------------------------*/
+/*tag-selector
+----------------------------*/
+/*tag-date-picker
+----------------------------*/
+/*table-cricle
+----------------------------*/
+/*tag-month-picker
+----------------------------*/
+/* Timeline-approval
+--------------------------*/
+/* top-nav-menu-2
+--------------------------*/
+/*导航条背景色*/
+/*导航条字体色*/
+/*导航条分割线*/
+/*导航条图标颜色*/
+/*导航条数字颜色*/
+/* table
+--------------------------*/
+/* Break-points
+ -------------------------- */
+/* Scrollbar
+ -------------------------- */
+/* Placeholder
+ -------------------------- */
+/* BEM
+ -------------------------- */
+/* ecf5ff */
+/* Table
+-------------------------- */
+/* Tooltip
+-------------------------- */
+/* 表格头部按钮
+--------------------------*/
+/* Element Chalk Variables */
+/* Transition
+-------------------------- */
+/* Color
+-------------------------- */
+/* 53a8ff */
+/* 66b1ff */
+/* 79bbff */
+/* 8cc5ff */
+/* a0cfff */
+/* b3d8ff */
+/* c6e2ff */
+/* d9ecff */
+/* ecf5ff */
+/* Link
+-------------------------- */
+/* Border
+-------------------------- */
+/* Fill
+-------------------------- */
+/* Typography
+-------------------------- */
+/* Size
+-------------------------- */
+/* z-index
+-------------------------- */
+/* Disable base
+-------------------------- */
+/* Icon
+-------------------------- */
+/* Checkbox
+-------------------------- */
+/* Radio
+-------------------------- */
+/* Select
+-------------------------- */
+/* Alert
+-------------------------- */
+/* MessageBox
+-------------------------- */
+/* Message
+-------------------------- */
+/* Notification
+-------------------------- */
+/* Input
+-------------------------- */
+/* Cascader
+-------------------------- */
+/* Group
+-------------------------- */
+/* Tab
+-------------------------- */
+/* Button
+-------------------------- */
+/* cascader
+-------------------------- */
+/* Switch
+-------------------------- */
+/* Dialog
+-------------------------- */
+/* Table
+-------------------------- */
+/* Pagination
+-------------------------- */
+/* Popup
+-------------------------- */
+/* Popover
+-------------------------- */
+/* Tooltip
+-------------------------- */
+/* Tag
+-------------------------- */
+/* Tree
+-------------------------- */
+/* Dropdown
+-------------------------- */
+/* Badge
+-------------------------- */
+/* Card
+--------------------------*/
+/* Slider
+--------------------------*/
+/* Steps
+--------------------------*/
+/* Menu
+--------------------------*/
+/* Rate
+--------------------------*/
+/* DatePicker
+--------------------------*/
+/* Loading
+--------------------------*/
+/* Scrollbar
+--------------------------*/
+/* Carousel
+--------------------------*/
+/* Collapse
+--------------------------*/
+/* Transfer
+--------------------------*/
+/* Header
+  --------------------------*/
+/* Footer
+--------------------------*/
+/* Main
+--------------------------*/
+/* Timeline
+--------------------------*/
+/* Backtop
+--------------------------*/
+/* Link
+--------------------------*/
+/* Calendar
+--------------------------*/
+/* Avatar
+--------------------------*/
+/* Break-point
+--------------------------*/
+/* 主色
+--------------------------*/
+/* cardTitle-color
+--------------------------*/
+/*tag-selector
+----------------------------*/
+/*tag-date-picker
+----------------------------*/
+/*table-cricle
+----------------------------*/
+/*tag-month-picker
+----------------------------*/
+/* Timeline-approval
+--------------------------*/
+/* top-nav-menu-2
+--------------------------*/
+/*导航条背景色*/
+/*导航条字体色*/
+/*导航条分割线*/
+/*导航条图标颜色*/
+/*导航条数字颜色*/
+/* table
+--------------------------*/
+.ccui-textarea {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  vertical-align: bottom;
+  font-size: 13px;
+  border: 1px solid #DCDFE6;
+  box-sizing: border-box;
 }
+.ccui-textarea .ccui-textarea__inner {
+  overflow: auto;
+  border: none;
+}
+.ccui-textarea__inner {
+  display: block;
+  resize: vertical;
+  padding: 5px 10px;
+  line-height: 1.5;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: inherit;
+  color: #4A4A4A;
+  background-color: #FFFFFF;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.ccui-textarea__inner::placeholder {
+  color: #999;
+}
+.ccui-textarea__inner:hover {
+  border-color: #999;
+}
+.ccui-textarea__inner:focus {
+  outline: none;
+  border-color: #0089EF;
+}
+.ccui-textarea__inner.input-short {
+  width: 100%;
+}
+
+.ccui-textarea .ccui-input__count {
+  color: #9B9B9B;
+  float: right;
+  font-size: 11px;
+  margin: 5px 20px;
+  line-height: 1;
+}
+.ccui-textarea.is-disabled {
+  background-color: #e5e5e5;
+}
+.ccui-textarea.is-disabled .ccui-textarea__inner {
+  background-color: #e5e5e5;
+  border-color: #ccc;
+  color: #999;
+  cursor: not-allowed;
+}
+.ccui-textarea.is-disabled .ccui-textarea__inner::placeholder {
+  color: #999;
+}
+
+.ccui-textarea.is-exceed {
+  border-color: #F56C6C;
+}
+.ccui-textarea.is-exceed .ccui-input__count {
+  color: #F56C6C;
+}
+
+.ccui-input {
+  position: relative;
+  font-size: 13px;
+  display: inline-block;
+  width: 100%;
+}
+.ccui-input input::-ms-clear {
+  display: none;
+}
+.ccui-input input::-ms-reveal {
+  display: none;
+}
+.ccui-input input.ccui-input__inner {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ccui-input::-webkit-scrollbar {
+  z-index: 11;
+  width: 6px;
+}
+.ccui-input::-webkit-scrollbar:horizontal {
+  height: 6px;
+}
+.ccui-input::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  width: 6px;
+  background: #b4bccc;
+}
+.ccui-input::-webkit-scrollbar-corner {
+  background: #fff;
+}
+.ccui-input::-webkit-scrollbar-track {
+  background: #fff;
+}
+.ccui-input::-webkit-scrollbar-track-piece {
+  background: #fff;
+  width: 6px;
+}
+.ccui-input .ccui-input__clear {
+  color: #999;
+  font-size: 13px;
+  cursor: pointer;
+  transition: color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.ccui-input .ccui-input__clear:hover {
+  color: #909399;
+}
+.ccui-input .ccui-input__count {
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  color: #9B9B9B;
+  font-size: 12px;
+}
+.ccui-input .ccui-input__count .ccui-input__count-inner {
+  line-height: initial;
+  display: inline-block;
+  padding: 0 5px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ccui-input__inner {
+  -webkit-appearance: none;
+  background-color: #FFFFFF;
+  background-image: none;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  color: #4A4A4A;
+  display: inline-block;
+  font-size: inherit;
+  height: 30px;
+  line-height: 1;
+  outline: none;
+  padding: 0 8px;
+  transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  width: 100%;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ccui-input__inner::placeholder {
+  color: #999;
+}
+.ccui-input__inner:hover {
+  border-color: #999;
+}
+.ccui-input__inner:focus {
+  outline: none;
+  border-color: #0089EF;
+}
+
+.ccui-input__suffix {
+  position: absolute;
+  height: 100%;
+  right: 5px;
+  top: 0;
+  text-align: center;
+  color: #999;
+  transition: all 0.3s;
+}
+
+.ccui-input__suffix-inner {
+  pointer-events: all;
+}
+
+.ccui-input__prefix {
+  position: absolute;
+  height: 100%;
+  left: 10px;
+  top: 0;
+  text-align: center;
+  color: #999;
+  transition: all 0.3s;
+}
+
+.ccui-input__icon {
+  height: 100%;
+  width: 25px;
+  text-align: center;
+  transition: all 0.3s;
+  line-height: 30px;
+}
+.ccui-input__icon:after {
+  content: "";
+  height: 100%;
+  width: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.ccui-input__validateIcon {
+  pointer-events: none;
+}
+
+.ccui-input.is-active .ccui-input__inner {
+  outline: none;
+  border-color: #0089EF;
+}
+
+.ccui-input.is-disabled {
+  background-color: #e5e5e5;
+}
+.ccui-input.is-disabled .ccui-input__inner {
+  background-color: #e5e5e5;
+  border-color: #ccc;
+  color: #999;
+  cursor: not-allowed;
+}
+.ccui-input.is-disabled .ccui-input__inner::placeholder {
+  color: #999;
+}
+.ccui-input.is-disabled .ccui-input__icon {
+  cursor: not-allowed;
+}
+
+.ccui-input.is-exceed .ccui-input__inner {
+  border-color: #F56C6C;
+}
+.ccui-input.is-exceed .ccui-input__suffix .ccui-input__count {
+  color: #F56C6C;
+}
+
+.ccui-input--suffix .ccui-input__inner {
+  padding-right: 30px;
+}
+
+.ccui-input--prefix .ccui-input__inner {
+  padding-left: 30px;
+}
+
+.ccui-input--medium {
+  font-size: 13px;
+}
+.ccui-input--medium .ccui-input__inner {
+  height: 36px;
+  line-height: 36px;
+}
+
+.ccui-input--medium .ccui-input__icon {
+  line-height: 36px;
+}
+
+.ccui-input--small {
+  font-size: 13px;
+}
+.ccui-input--small .ccui-input__inner {
+  height: 32px;
+  line-height: 32px;
+}
+
+.ccui-input--small .ccui-input__icon {
+  line-height: 32px;
+}
+
+.ccui-input--mini {
+  font-size: 12px;
+}
+.ccui-input--mini .ccui-input__inner {
+  height: 28px;
+  line-height: 28px;
+}
+
+.ccui-input--mini .ccui-input__icon {
+  line-height: 28px;
+}
+
+.ccui-input-group {
+  line-height: normal;
+  display: inline-table;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.ccui-input-group > .ccui-input__inner {
+  vertical-align: middle;
+  display: table-cell;
+}
+.ccui-input-group__append, .ccui-input-group__prepend {
+  background-color: #e5e5e5;
+  color: #9B9B9B;
+  vertical-align: middle;
+  display: table-cell;
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0 20px;
+  width: 1px;
+  white-space: nowrap;
+}
+.ccui-input-group__append:focus, .ccui-input-group__prepend:focus {
+  outline: none;
+}
+.ccui-input-group__append .ccui-select,
+.ccui-input-group__append .ccui-button, .ccui-input-group__prepend .ccui-select,
+.ccui-input-group__prepend .ccui-button {
+  display: inline-block;
+  margin: -10px -20px;
+}
+.ccui-input-group__append button.ccui-button,
+.ccui-input-group__append div.ccui-select .ccui-input__inner,
+.ccui-input-group__append div.ccui-select:hover .ccui-input__inner, .ccui-input-group__prepend button.ccui-button,
+.ccui-input-group__prepend div.ccui-select .ccui-input__inner,
+.ccui-input-group__prepend div.ccui-select:hover .ccui-input__inner {
+  border-color: transparent;
+  background-color: transparent;
+  color: inherit;
+  border-top: 0;
+  border-bottom: 0;
+}
+.ccui-input-group__append .ccui-button,
+.ccui-input-group__append .ccui-input, .ccui-input-group__prepend .ccui-button,
+.ccui-input-group__prepend .ccui-input {
+  font-size: inherit;
+}
+
+.ccui-input-group__prepend {
+  border-right: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.ccui-input-group__append {
+  border-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.ccui-input-group--prepend .ccui-input__inner {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.ccui-input-group--prepend .ccui-select .ccui-input.is-focus .ccui-input__inner {
+  border-color: transparent;
+}
+
+.ccui-input-group--append .ccui-input__inner {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.ccui-input-group--append .ccui-select .ccui-input.is-focus .ccui-input__inner {
+  border-color: transparent;
+}
+
+/** disalbe default clear on IE */
+.ccui-input__inner::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.input-long {
+  width: 410px;
+}
+
+.input-short {
+  width: 100%;
+}
+
+.textarea-long {
+  width: 1016px;
+  height: 153px;
+}
+
+.textarea-limit {
+  font-size: 12px;
+  float: right;
+  width: 50px;
+  height: 40px;
+  color: #909399;
+}
+
+/*# sourceMappingURL=index.css.map */
