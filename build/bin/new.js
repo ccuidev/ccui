@@ -9,37 +9,49 @@ if (!process.argv[2]) {
   console.error('[组件名]必填 - 请输入新组件名称')
   process.exit(1)
 }
+if (!process.argv[3]) {
+  console.error('[组件名中文]必填 - 请输入新组件名称')
+  process.exit(1)
+}
 
 const path = require('path')
 const fs = require('fs')
 const fileSave = require('file-save')
 const uppercamelcase = require('uppercamelcase')
-const componentname = 'ccui' + process.argv[2]
+const componentname = 'ccui-' + process.argv[2]
 const chineseName = process.argv[3] || componentname
 const ComponentName = uppercamelcase(componentname)
 const PackagePath = path.resolve(__dirname, '../../src/components', ComponentName)
 const PackagePath2 = path.resolve(__dirname, '../../docs', ComponentName)
 const Files = [
-{
-  filename: 'index.js',
-  content: `import ${ComponentName} from './${ComponentName}.vue'
+  {
+    filename: 'index.js',
+    content: `import ${ComponentName} from './${ComponentName}.vue'
 
 export default ${ComponentName}`
-},
+  },
+  {
+    filename: path.join('../../src/components/theme-chalk/src', `${componentname}.scss`),
+    content: `@import "mixins/mixins";
+@import "common/var";
+
+@include b(${componentname}) {
+}`
+  },
   {
     filename: `${ComponentName}.vue`,
     content: `<template>
-<div class="ccui-${componentname}"></div>
+<div class="${componentname}"></div>
 </template>
 
 <script>
 export default {
-  name: '${componentname}'
+  name: '${ComponentName}'
 };
 </script>`
   },
   {
-    filename: `${componentname}.spec.js`,
+    filename: `${ComponentName}.spec.js`,
     content: ``
   }]
 const Files2 = [
@@ -104,4 +116,10 @@ Files2.forEach(file => {
     .write(file.content, 'utf8')
     .end('\n')
 })
+// 添加到 index.scss
+const sassPath = path.join(__dirname, './src/components/theme-chalk/src/index.scss');
+const sassImportText = `${fs.readFileSync(sassPath)}@import "./${componentname}.scss";`;
+fileSave(sassPath)
+  .write(sassImportText, 'utf8')
+  .end('\n');
 console.log('DONE!')

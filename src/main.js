@@ -1,7 +1,8 @@
 import * as components from './components'
+import './components/theme-chalk/index.scss'
 
 const ComponentLibary = {
-  install(Vue) {
+  install (Vue) {
     // components
     for (const componentName in components) {
       const component = components[componentName]
