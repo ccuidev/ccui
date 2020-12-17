@@ -1,0 +1,108 @@
+@import "../common/var";
+@import "../mixins/mixins";
+@import "./picker-panel.scss";
+
+@include b(date-picker) {
+  width: 250px;
+
+  .ccui-popper[x-placement^="bottom"] .popper__arrow::after,
+  .ccui-popper[x-placement^="bottom"] .popper__arrow {
+    display: none !important;
+    top: 0 !important;
+    left: 50 !important;
+    margin-right: none !important;
+    border-top-width: 0 !important;
+    border-bottom-color: transparent !important;
+  }
+
+  &.has-sidebar.has-time {
+    width: 357px;
+  }
+
+  &.has-sidebar {
+    width: 360px;
+  }
+
+  &.has-time .ccui-picker-panel__body-wrapper {
+    position: relative;
+  }
+
+  .ccui-picker-panel__content {
+    width: 221px;
+  }
+
+  table {
+    table-layout: fixed;
+    width: 100%;
+  }
+
+  @include e(editor-wrap) {
+    position: relative;
+    display: table-cell;
+    padding: 0 5px;
+  }
+
+  @include e(time-header) {
+    position: relative;
+    border-bottom: 1px solid $--datepicker-inner-border-color;
+    font-size: 12px;
+    padding: 8px 5px 5px 5px;
+    display: table;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  @include e(header) {
+    margin: 3px;
+    text-align: center;
+    border-bottom: 1px solid #DDDDDD;
+
+    @include m(bordered) {
+      margin-bottom: 0;
+      border-bottom: solid 1px $--border-color-lighter;
+
+      &+.ccui-picker-panel__content {
+        margin-top: 0;
+      }
+    }
+  }
+
+  @include e(header-label) {
+    font-size: 13px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    padding: 0 5px;
+    line-height: 22px;
+    text-align: center;
+    cursor: pointer;
+    color: $--color-text-regular;
+
+    &:hover {
+      color: $--datepicker-hover-font-color;
+    }
+
+    &.active {
+      color: $--datepicker-active-color;
+    }
+  }
+
+  @include e(prev-btn) {
+    float: left;
+  }
+
+  @include e(next-btn) {
+    float: right;
+  }
+
+  @include e(time-wrap) {
+    padding: 10px;
+    text-align: center;
+  }
+
+  @include e(time-label) {
+    float: left;
+    cursor: pointer;
+    line-height: 30px;
+    margin-left: 10px;
+  }
+}

@@ -23,11 +23,15 @@
     "vuepress": "^1.0.0-alpha.44"
   },
   "dependencies": {
+    "async-validator": "~1.8.1",
     "build-lib": "^1.0.0",
     "file-save": "^0.2.0",
     "fs": "0.0.1-security",
     "js-cookie": "^2.2.1",
+    "normalize-wheel": "^1.0.1",
     "path": "^0.12.7",
+    "resize-observer-polyfill": "^1.5.1",
+    "throttle-debounce": "^1.0.1",
     "uppercamelcase": "^3.0.0"
   }
 }

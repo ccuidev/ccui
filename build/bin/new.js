@@ -104,7 +104,7 @@ fs.writeFileSync(path.join( './src/components/theme-chalk/index.scss'), sassImpo
 let content = `@import "mixins/mixins";
 @import "common/var";
 
-@include b(${componentname}) {
+@include b(${process.argv[2]}) {
 }`
 
 fileSave(path.join('./src/components/theme-chalk/', `${componentname}.scss`))

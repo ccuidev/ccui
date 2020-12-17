@@ -1,0 +1,689 @@
+@charset "UTF-8";
+@import 'common/var';
+@import 'mixins/button';
+@import 'mixins/mixins';
+@import 'mixins/utils';
+
+@include b(button) {
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  background: $--button-default-background-color;
+  border: $--border-base;
+  border-color: $--button-default-border-color;
+  color: $--button-default-font-color;
+  -webkit-appearance: none;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+
+  transition: 0.1s;
+  font-weight: $--button-font-weight;
+  @include utils-user-select(none);
+  & + & {
+    margin-left: 10px;
+  }
+
+  @include button-size(
+    $--button-padding-vertical,
+    $--button-padding-horizontal,
+    $--button-font-size,
+    $--button-border-radius
+  );
+
+  &:hover,
+  &:focus {
+    //color: $--color-primary;
+    border-color: $--color-primary-light-7;
+    background-color: $--color-primary-light-9;
+  }
+
+  &:active {
+    color: mix(
+      $--color-black,
+      $--color-primary,
+      $--button-active-shade-percent
+    );
+    border-color: mix(
+      $--color-black,
+      $--color-primary,
+      $--button-active-shade-percent
+    );
+    outline: none;
+  }
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  & [class*='ccui-icon-'] {
+    & + span {
+      margin-left: 5px;
+    }
+  }
+
+  @include when(plain) {
+    &:hover,
+    &:focus {
+      background: $--color-white;
+      border-color: $--color-primary;
+      //color: $--color-primary;
+    }
+
+    &:active {
+      background: $--color-white;
+      border-color: mix(
+        $--color-black,
+        $--color-primary,
+        $--button-active-shade-percent
+      );
+      color: mix(
+        $--color-black,
+        $--color-primary,
+        $--button-active-shade-percent
+      );
+      outline: none;
+    }
+  }
+
+  @include when(active) {
+    color: mix(
+      $--color-black,
+      $--color-primary,
+      $--button-active-shade-percent
+    );
+    border-color: mix(
+      $--color-black,
+      $--color-primary,
+      $--button-active-shade-percent
+    );
+  }
+
+  // 定制样式
+  &.ccui-button--default {
+    padding: 0 10px;
+    height: 30px;
+    //line-height: 30px;
+    font-size: 13px;
+  }
+
+  // 定制样式
+  &.ccui-button--default-mini {
+    padding: 0 15px;
+    height: 28px;
+    font-size: 13px;
+    line-height: 0;
+    background-color: #f1f1f1;
+    border-color: #bcbcbc;
+  }
+
+  &.ccui-button--default-bottom {
+    height: 24px;
+    padding: 6px 10px 6px 10px;
+    background-color: $--color-white;
+    border-color: $--color-white;
+    border-radius: $--border-radius-small;
+
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      height: 16px;
+      line-height: 10px;
+      font-size: 13px;
+      font-weight: 400;
+    }
+    &:hover,
+    &:focus {
+      color: $--color-text-primary;
+      border-color: $--button-bottom-default-hover;
+      background-color: $--button-bottom-default-hover;
+    }
+
+    &:active {
+      color: $--color-text-primary;
+      border-color: $--button-bottom-default-hover;
+      background-color: $--button-bottom-default-active;
+      outline: none;
+    }
+  }
+
+  @include when(disabled) {
+    &,
+    &:hover,
+    &:focus {
+      color: $--button-disabled-font-color;
+      cursor: not-allowed;
+      background-image: none;
+      background-color: $--button-disabled-background-color;
+      border-color: $--button-disabled-border-color;
+    }
+
+    &.ccui-button--text {
+      font-size: 13px;
+      background-color: transparent;
+      border-color: transparent;
+    }
+
+    &.is-plain {
+      &,
+      &:hover,
+      &:focus {
+        background-color: $--color-white;
+        border-color: $--button-disabled-border-color;
+        color: $--button-disabled-font-color;
+      }
+    }
+
+    // 定制样式
+    &.ccui-button--default {
+      background-color: $--button-bottom-default-disabled-background-color;
+    }
+  }
+
+  @include when(loading) {
+    position: relative;
+    pointer-events: none;
+
+    &:before {
+      pointer-events: none;
+      content: '';
+      position: absolute;
+      left: -1px;
+      top: -1px;
+      right: -1px;
+      bottom: -1px;
+      border-radius: inherit;
+      background-color: rgba(255, 255, 255, 0.35);
+    }
+  }
+  @include when(round) {
+    border-radius: 20px;
+    padding: 12px 23px;
+  }
+  @include when(circle) {
+    border-radius: 50%;
+    padding: $--button-padding-vertical;
+  }
+  @include m(primary) {
+    @include button-variant(
+      $--button-primary-font-color,
+      $--button-primary-background-color,
+      $--button-primary-border-color
+    );
+  }
+  @include m(success) {
+    @include button-variant(
+      $--button-success-font-color,
+      $--button-success-background-color,
+      $--button-success-border-color
+    );
+  }
+  @include m(warning) {
+    @include button-variant(
+      $--button-warning-font-color,
+      $--button-warning-background-color,
+      $--button-warning-border-color
+    );
+  }
+  @include m(danger) {
+    @include button-variant(
+      $--button-danger-font-color,
+      $--button-danger-background-color,
+      $--button-danger-border-color
+    );
+  }
+  @include m(info) {
+    @include button-variant(
+      $--button-info-font-color,
+      $--button-info-background-color,
+      $--button-info-border-color
+    );
+  }
+  @include m(medium) {
+    @include button-size(
+      $--button-medium-padding-vertical,
+      $--button-medium-padding-horizontal,
+      $--button-medium-font-size,
+      $--button-medium-border-radius
+    );
+    @include when(circle) {
+      padding: $--button-medium-padding-vertical;
+    }
+  }
+  @include m(small) {
+    @include button-size(
+      $--button-small-padding-vertical,
+      $--button-small-padding-horizontal,
+      $--button-small-font-size,
+      $--button-small-border-radius
+    );
+    @include when(circle) {
+      padding: $--button-small-padding-vertical;
+    }
+  }
+  @include m(mini) {
+    @include button-size(
+      $--button-mini-padding-vertical,
+      $--button-mini-padding-horizontal,
+      $--button-mini-font-size,
+      $--button-mini-border-radius
+    );
+    // 定制样式 按钮
+    padding: 5px 10px;
+    fong-size: 13px;
+    border-radius: $--border-radius-small;
+  }
+  @include m(text) {
+    font-size: 14px;
+    border-color: transparent;
+    color: $--color-text-button;
+    background: transparent;
+    padding-left: 0;
+    padding-right: 0;
+
+    &:hover,
+    &:focus {
+      //color: mix($--color-white, $--color-text-button, $--button-hover-tint-percent);
+      border-color: transparent;
+      background-color: transparent;
+    }
+    &:active {
+      //color: mix($--color-black, $--color-text-button, $--button-active-shade-percent);
+      border-color: transparent;
+      background-color: transparent;
+    }
+
+    &.is-disabled,
+    &.is-disabled:hover,
+    &.is-disabled:focus {
+      border-color: transparent;
+    }
+  }
+  // 定制按钮
+  @include m(bottom) {
+    @include button-variant-ccui-bottom(
+      $--button-bottom-font-color,
+      $--button-bottom-background-color,
+      $--button-bottom-border-color
+    );
+    padding: 3px 10px;
+    border-radius: $--border-radius-small;
+    font-size: 13px;
+    height: 28px;
+    span {
+      display: inline-block;
+      //vertical-align:middle;
+      line-height: 13px;
+      font-size: 13px;
+      font-weight: 400;
+      color: white;
+    }
+    &:focus {
+      background-color: $--color-bottom;
+      border: 1px solid #9e9e9e;
+    }
+    &:hover {
+      background-color: $--color-bottom-hover;
+      border: 1px solid #9e9e9e;
+    }
+    &:active {
+      background-color: $--color-bottom-active;
+      border: 1px solid #9e9e9e;
+    }
+  }
+
+  @include m(primary) {
+    &:focus {
+      background-color: $--color-primary !important;
+    }
+    @include button-variant-ccui-primary(
+      $--color-white,
+      $--color-assist-button,
+      $--color-assist-button
+    );
+
+    //font-weight: 400;
+    //font-size: 16px;
+    padding: 0 10px;
+    border: 0;
+    height: 30px;
+    ////line-height: 26px;
+    border-radius: $--border-radius-small;
+    span {
+      //  display: inline-block;
+      //  vertical-align:middle;
+      //  line-height: 12px;
+      font-size: 13px;
+      //  font-weight: 400;
+      //  color: white;
+      //
+    }
+  }
+
+  &.ccui-button--primary-icon-big {
+    @include button-variant-ccui-primary(
+      $--color-white,
+      $--color-assist-button,
+      $--color-assist-button
+    );
+    height: 30px;
+    padding: 5px 10px 7px 10px;
+    font-size: 18px;
+    border-radius: $--border-radius-small;
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      height: 16px;
+      line-height: 12px;
+      font-size: 13px;
+      font-weight: 400;
+      color: white;
+    }
+  }
+
+  &.ccui-button--primary-icon-medium {
+    @include button-variant-ccui-primary(
+      $--color-white,
+      $--color-assist-button,
+      $--color-assist-button
+    );
+    height: 30px;
+    padding: 6px 10px 6px 10px;
+    font-size: 16px;
+    border-radius: $--border-radius-small;
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      height: 16px;
+      line-height: 10px;
+      font-size: 13px;
+      font-weight: 400;
+      color: white;
+    }
+  }
+
+  &.ccui-button--primary-font-mini {
+    @include button-variant-ccui-primary(
+      $--color-white,
+      $--color-assist-button,
+      $--color-assist-button
+    );
+    height: 28px;
+    padding: 0 15px;
+    font-size: 13px;
+    line-height: 0;
+    border-radius: $--border-radius-small;
+    font-weight: 400;
+  }
+
+  &.ccui-button--table-top-active {
+    //@include button-variant-ccui-primary($--color-white, $--color-assist-button, $--color-assist-button);
+    color: $--tabletitle-button-color-text;
+    border: none;
+    border-bottom: 2px solid $--tabletitle-color-bottom-line;
+    border-radius: 0;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 10px 0;
+    &:hover {
+      background: transparent;
+    }
+    &:focus {
+      //color: $--tabletitle-button-color-text;
+      border: none;
+      border-bottom: 2px solid $--tabletitle-color-bottom-line;
+      border-radius: 0;
+      font-weight: 600;
+      font-size: 13px;
+      background-color: transparent;
+    }
+  }
+
+  &.ccui-button--table-top {
+    //@include button-variant-ccui-primary($--color-white, $--color-assist-button, $--color-assist-button);
+    color: $--timeline-approval-color-normal;
+    border: none;
+    border-radius: 0;
+    font-weight: 500;
+    font-size: 13px;
+    padding: 10px 0;
+
+    &:hover {
+      color: $--tabletitle-color-hover;
+      background: transparent;
+    }
+    &:focus {
+      color: $--timeline-approval-color-normal;
+      border: none;
+      border-radius: 0;
+      font-weight: 500;
+      font-size: 13px;
+      background-color: transparent;
+    }
+
+    &.is-disabled {
+      padding: 10px 0;
+    }
+    &.is-disabled:hover,
+    &.is-disabled:focus {
+      color: $--timeline-approval-color-normal;
+    }
+  }
+
+  // 添加操作按钮
+  &.ccui-button--add-button {
+    border: none;
+    background: #fff;
+    .icon-ccui-add {
+      color: #0089ef;
+      float: left;
+    }
+    span {
+      color: #0089ef;
+      margin-left: -5px;
+    }
+  }
+
+  // 价格操作按钮
+  &.ccui-button--price-button {
+    padding: 0;
+    width: 100px;
+    height: 30px;
+    background: #fff;
+    border-radius: 0;
+    position: relative;
+    &.ccui-button--price-button:focus {
+      span {
+        div {
+          border-bottom: 11px solid $--color-blue;
+        }
+      }
+    }
+    span {
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(51, 51, 51, 1);
+      display: block;
+      margin-top: -1px;
+      div {
+        width: 0;
+        height: 0;
+        border-left: 11px solid transparent;
+        border-bottom: 11px solid #cccccc;
+        position: absolute;
+        bottom: -1px;
+        right: 0px;
+      }
+    }
+    .icon-ccui-check {
+      transform: scale(0.5);
+      font-size: 20px;
+      position: absolute;
+      bottom: -7px;
+      right: -12px;
+      color: #fff;
+      z-index: 99;
+    }
+  }
+
+  // 单号操作按钮
+  &.ccui-button--single-number {
+    padding: 0 10px;
+    height: 30px;
+    background: rgba(247, 249, 255, 1);
+    border: 1px solid rgba(0, 137, 239, 1);
+    font-weight: 600;
+    border-radius: 4px;
+    position: relative;
+    &.is-plain {
+      &:hover,
+      &:focus {
+        background-color: $--color-white;
+        border-color: #5576cf;
+        color: $--color-white;
+      }
+    }
+    span {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(0, 137, 239, 1);
+      display: block;
+    }
+    i {
+      position: absolute;
+      font-weight: 600;
+      left: 2px;
+      top: 7px;
+      color: #5576cf;
+    }
+  }
+
+  &.ccui-button--single-number-filleted {
+    padding: 0 20px;
+    height: 30px;
+    background: #f7f9ff;
+    border: 1px solid #5576cf;
+    font-weight: 600;
+    border-radius: 4px;
+    position: relative;
+    &.is-plain {
+      &:hover {
+        color: #56a4ff;
+        background: #ebf8ff;
+        border: 1px solid #56a4ff;
+      }
+      &:focus {
+        color: #56a4ff;
+        border: 1px solid #56a4ff;
+      }
+      &:active {
+        background: #e5edfa;
+        border: 1px solid #3054b6;
+        span {
+          color: #3054b6;
+        }
+      }
+    }
+    span {
+      font-size: 13px;
+      font-weight: 500;
+      color: #5576cf;
+      display: block;
+    }
+    i {
+      position: absolute;
+      font-weight: 600;
+      left: 2px;
+      top: 7px;
+      color: #5576cf;
+    }
+  }
+
+  [class^='icon-ccui-'],
+  [class*=' icon-ccui-'] {
+    margin-right: 5px;
+  }
+}
+
+@include b(button-group) {
+  @include utils-clearfix;
+  display: inline-block;
+  vertical-align: middle;
+
+  & > .ccui-button {
+    float: left;
+    position: relative;
+    & + .ccui-button {
+      margin-left: 0;
+    }
+    &.is-disabled {
+      z-index: 1;
+    }
+    &:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    &:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    &:first-child:last-child {
+      border-top-right-radius: $--button-border-radius;
+      border-bottom-right-radius: $--button-border-radius;
+      border-top-left-radius: $--button-border-radius;
+      border-bottom-left-radius: $--button-border-radius;
+
+      &.is-round {
+        border-radius: 20px;
+      }
+
+      &.is-circle {
+        border-radius: 50%;
+      }
+    }
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+    }
+    &:not(:last-child) {
+      margin-right: -1px;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      z-index: 1;
+    }
+
+    @include when(active) {
+      z-index: 1;
+    }
+  }
+
+  & > .ccui-dropdown {
+    & > .ccui-button {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-left-color: rgba($--color-white, 0.5);
+    }
+  }
+
+  @each $type in (primary, success, warning, danger, info) {
+    .ccui-button--#{$type} {
+      &:first-child {
+        border-right-color: rgba($--color-white, 0.5);
+      }
+      &:last-child {
+        border-left-color: rgba($--color-white, 0.5);
+      }
+      &:not(:first-child):not(:last-child) {
+        border-left-color: rgba($--color-white, 0.5);
+        border-right-color: rgba($--color-white, 0.5);
+      }
+    }
+  }
+}
+.ccui-radio-button:focus:not(.is-focus):not(:active):not(.is-disabled) {
+  box-shadow: 0 0 0 0 #ffffff !important;
+}
